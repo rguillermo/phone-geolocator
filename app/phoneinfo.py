@@ -22,6 +22,7 @@ class PhoneNumber:
             parsed = self._parse()
             if phonenumbers.is_valid_number(parsed):
                 info['International format'] = self._international(parsed)
+                info['Is valid'] = 'Yes'
                 info['Country code'] = parsed.country_code
                 info['National number'] = parsed.national_number
                 info['Geolocation'] = self._geolocation(parsed)
@@ -32,4 +33,4 @@ class PhoneNumber:
                 info['Is valid'] = 'No'
             return info
         except NumberParseException as e:
-            return {'number': self.number, 'error_msg': str(e)}
+            return {'Number': self.number, 'Message': str(e)}
