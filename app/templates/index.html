@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row mt-5">
+    <div class="col">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-12 align-self-center text-center align-items-center justify-content-center">
+                    <h1>Search phone number info</h1>
+
+                    <form hx-post="/phoneinfo" hx-target="#phoneinfo-results" id="phoneinfo-form" class="mt-3">
+
+                        <input
+                        class="form-control form-control-lg"
+                        type="text"
+                        id="phone-input"
+                        placeholder="e.g. +442083661177"
+                        name="phonenumber"
+                        aria-label="phonenumber">
+
+                        <button type="submit" class="btn btn-primary" id="phone-submit">
+                            <i class="fas fa-search w-100"></i>
+                        </button>
+
+                    </form>
+
+                    <div class="col-12 text-start mt-5">
+                        <div id="phoneinfo-results"></div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

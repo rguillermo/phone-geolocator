@@ -1,0 +1,2 @@
+-r common.txt
+uvicorn==0.16.0
