@@ -3,6 +3,7 @@ from pathlib import Path
 from fastapi import FastAPI, responses, requests, Form
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
+from starlette.responses import FileResponse
 
 from app.phoneinfo import PhoneNumber
 from app.shortcuts import render
@@ -21,6 +22,11 @@ app.mount('/static', StaticFiles(directory=STATIC_DIR), name='static')
 
 def is_htmx(request: requests.Request) -> bool:
     return request.headers.get('hx-request') == 'true'
+
+
+@app.get('/favicon.ico', include_in_schema=False)
+async def favicon():
+    return FileResponse(STATIC_DIR / 'favicon.ico')
 
 
 @app.get("/", response_class=responses.HTMLResponse)

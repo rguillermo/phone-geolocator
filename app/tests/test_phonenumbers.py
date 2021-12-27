@@ -1,5 +1,5 @@
 from typing import Any
-from app.phoneinfo import PhoneNumber
+from ..phoneinfo import PhoneNumber
 
 def exists_all_field_names(fields: list[str], d: dict[str, Any]) -> bool:
     for field in fields:
